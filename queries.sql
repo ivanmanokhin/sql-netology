@@ -204,9 +204,8 @@ SELECT arrival_city, departure_city FROM exist_routes er);
 --Таблица aircrafts используется для получения данных о максимальной дальности перелета для каждой 
 --модели воздушного судна.
 --В результирующей выборке получаем: модель воздушного судна, аэропорт вылета, аэропорт прибытия,
---дистанцию между аэропортами, и (с использованием функции CASE) процентный интервал,
---в котором, в рамках градации (от 0 до 25%, от 25 до 50%, от 50 до 75% и от 75 до 100% включительно)
---показано насколько исчерпана максимальная дальность перелета для воздушного судна.
+--дистанцию между аэропортами, и (с использованием функции CASE) проверяем, что растояние между аэропортами
+--меньше, чем максимальная дальность перелета воздушного судна.
 WITH cte_distance AS (SELECT DISTINCT aircraft_code,
 	departure_airport,
 	arrival_airport,
@@ -225,10 +224,9 @@ SELECT cd.aircraft_code,
 	arrival_airport,
 	distance, 
 	CASE 
-		WHEN round(distance * 100 / "range") BETWEEN 0 AND 24 THEN '0 and 25'
-		WHEN round(distance * 100 / "range") BETWEEN 25 AND 49 THEN '25 and 50'
-		WHEN round(distance * 100 / "range") BETWEEN 50 AND 74 THEN '50 and 75'
-		WHEN round(distance * 100 / "range") BETWEEN 75 AND 100 THEN '75 and 100'
-	END AS "between_perc"
+		WHEN distance < "range" THEN True
+		WHEN distance > "range" THEN False
+		ELSE NULL
+	END AS "dis_less_range"
 FROM cte_distance cd
 JOIN aircrafts a ON cd.aircraft_code = a.aircraft_code;
