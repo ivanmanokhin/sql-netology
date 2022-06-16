@@ -1,5 +1,5 @@
 # Итоговая работа по курсу "SQL и получение данных"
-![header](https://user-images.githubusercontent.com/105848432/169823397-da57c3ad-fa14-4c87-abba-e311b1e10ea9.png)
+![header](/assets/images/header.png)
 ---
 ### Содержание  
 - [Задание 1](#task-1)  
@@ -15,11 +15,11 @@
 ## <a name="task-1"></a> Задание 1: используемый тип подключения  
 В работе использовался локальный тип подключения. База данных была развернута из файла avia.backup.  
 Скриншот успешного импорта данных:  
-![Скриншот импорта](https://user-images.githubusercontent.com/105848432/169804661-e817f17c-93dc-4251-bddb-1d1770e65304.png)
+![Скриншот импорта](/assets/images/restore_log.png)
 
 ## <a name="task-2"></a> Задание 2: ER-диаграмма  
 Скриншот ER-диаграммы из DBeaver`a:  
-![Скриншот ER-диаграмма](https://user-images.githubusercontent.com/105848432/170341751-938be5b8-5d00-46d6-a0d6-74025a617575.png)
+![Скриншот ER-диаграмма](/assets/images/er-diagram.png)
 
 ## <a name="task-3"></a> Задание 3: краткое описания базы данных  
 База данных состоит из:  
